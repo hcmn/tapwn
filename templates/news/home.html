@@ -7,5 +7,9 @@
         <p>Well, since it's already {{ right_now.minute }} past {{ right_now.hour }} UTC,
         that is as far as we are going to take you in this tutorial.</p>
         <p>What you do next is up to you...</p>
+        <h3>Headlines:</h3>
+        {% for headline in headlines %}
+            <a href="#">{{ headline.subject }}</a><br/>
+        {% endfor %}
     </body>
 </html>

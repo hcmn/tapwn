@@ -1,5 +1,4 @@
 from django.db import models
-#from django.utils import timezone
 
 # Create your models here.
 class Headline(models.Model):
@@ -8,3 +7,6 @@ class Headline(models.Model):
     description = models.TextField()
     image_link = models.CharField(max_length=200)
     source_link = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.subject
