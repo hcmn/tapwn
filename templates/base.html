@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Jumping into Django | {% block title %}Homepage{% endblock %}</title>
+</head>
+<body>
+	<div class="navigation">
+		<p>Navigation: <a href="{% url home %}">Home</a> | </p>
+	</div>
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+</body>
+</html>
