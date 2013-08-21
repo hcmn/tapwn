@@ -1,9 +1,35 @@
 from datetime import datetime
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from tapwn.news.models import Headline
-from tapwn.news.forms import HeadlineForm
+from tapwn.news.forms import HeadlineForm, LoginForm
+
+def login_page(request):
+    message = None
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username,password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    message = "You logged in with success"
+                else:
+                    message = "Your user is inactive"
+            else:
+                message = "Invalid username and/or password"
+    else:
+        form = LoginForm()
+    return render_to_response('login.html',{'message':message,'form':form}, context_instance=RequestContext(request))
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 
 def home(request):
     headlines = Headline.objects.all()
@@ -20,6 +46,7 @@ def headline_detail(request, headline_id):
         raise Http404
     return render_to_response('news/headline_detail.html', {'headline':headline})
 
+@login_required
 def headline_create(request):
     if request.method == 'POST':
         form = HeadlineForm(request.POST)
@@ -30,6 +57,7 @@ def headline_create(request):
         form = HeadlineForm()
     return render_to_response('news/headline_create.html', {'form':form}, context_instance=RequestContext(request))
 
+@login_required
 def headline_update(request, headline_id):
     try:
         headline = Headline.objects.get(pk=headline_id)
@@ -44,6 +72,7 @@ def headline_update(request, headline_id):
     except Headline.DoesNotExist:
         raise Http404
 
+@login_required
 def headline_delete(request, headline_id):
     try:
         headline = Headline.objects.get(pk=headline_id)

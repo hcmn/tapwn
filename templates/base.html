@@ -5,6 +5,14 @@
 	<title>Jumping into Django | {% block title %}Homepage{% endblock %}</title>
 </head>
 <body>
+    <div id="header">
+        {% if user.is_authenticated %}
+            <p>Welcome, <b>{{ user.username }}</b> | <a href="{% url logout %}">Logout</a></p>
+        {% else %}
+            <p>Welcome.  Please <a href="{% url login %}">Log-In</a></p>
+        {% endif %}
+        <h1>The Latest News</h1>
+    </div>
 	<div class="navigation">
 		<p>Navigation: <a href="{% url home %}">Home</a> | <a href="{% url headlines %}">Headlines</a> | <a href="{% url headline_create %}">Create Headline</a></p>
 	</div>
