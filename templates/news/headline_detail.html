@@ -6,5 +6,7 @@
     <img src="{{headline.image_link}}" />
     <p>{{headline.description}}</p>
     {{headline.source_link}}
+    {% comment %}
     <h5><a href="{% url headline_delete headline.id%}">Delete This Headline</a></h5>
+    {% endcomment %}
 {% endblock %}
