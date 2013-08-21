@@ -7,6 +7,6 @@
     <p>What you do next is up to you...</p>
     <h3>Headlines:</h3>
     {% for headline in headlines %}
-        Date: {{ headline.publication_date|date:"D M" }} <a href="#">{{ headline.subject }}</a> Source: {{ headline.source_link }}<br/>
+        Date: {{ headline.publication_date|date:"D d M Y" }} <a href="{% url headline_detail headline.id%}">{{ headline.subject }}</a> Source: {{ headline.source_link }}<br/>
     {% endfor %}
 {% endblock %}
