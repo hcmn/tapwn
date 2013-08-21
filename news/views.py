@@ -29,3 +29,17 @@ def headline_create(request):
     else:
         form = HeadlineForm()
     return render_to_response('news/headline_create.html', {'form':form}, context_instance=RequestContext(request))
+
+def headline_update(request, headline_id):
+    try:
+        headline = Headline.objects.get(pk=headline_id)
+        if request.method == 'POST':
+            form = HeadlineForm(request.POST, instance=headline)
+            if form.is_valid:
+                form.save()
+                return redirect('headline_detail', headline_id)
+        else:
+            form = HeadlineForm(instance=headline)
+        return render_to_response('news/headline_update.html', {'form':form}, context_instance=RequestContext(request))
+    except Headline.DoesNotExist:
+        raise Http404

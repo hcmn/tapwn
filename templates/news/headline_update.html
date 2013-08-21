@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Update Headline{% endblock %}
+{% block content %}
+    <form action="" method="post">{% csrf_token %}
+    {% include 'news/form_snippet.html' %}
+    <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

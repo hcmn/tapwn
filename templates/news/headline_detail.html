@@ -2,6 +2,7 @@
 {% block title %}Headline Detail {% endblock %}
 {% block content %}
     <h2>{{headline.subject}}</h2>
+    <h5><a href="{% url headline_update headline.id%}">Edit This Headline</a></h5>
     <img src="{{headline.image_link}}" />
     <p>{{headline.description}}</p>
     {{headline.source_link}}
