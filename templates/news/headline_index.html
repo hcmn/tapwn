@@ -3,6 +3,6 @@
 {% block content %}
     <h2>Headlines</h2>
     {% for headline in headlines %}
-        <a href="{% url headline_detail headline.id %}">{{headline.subject}}</a><br />
+        <a href="{% url headline_detail headline.id %}">{{headline.id}}. {{headline.subject}}</a><br />
     {% endfor %}
 {% endblock %}

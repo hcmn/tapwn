@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^headlines/(?P<headline_id>\d+)/$', 'tapwn.news.views.headline_detail', name='headline_detail'),
     url(r'^headlines/create/$', 'tapwn.news.views.headline_create', name='headline_create'),
     url(r'^headlines/update/(?P<headline_id>\d+)/$', 'tapwn.news.views.headline_update', name='headline_update'),
+    url(r'^headlines/delete/(?P<headline_id>\d+)/$', 'tapwn.news.views.headline_delete', name='headline_delete'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

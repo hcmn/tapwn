@@ -43,3 +43,11 @@ def headline_update(request, headline_id):
         return render_to_response('news/headline_update.html', {'form':form}, context_instance=RequestContext(request))
     except Headline.DoesNotExist:
         raise Http404
+
+def headline_delete(request, headline_id):
+    try:
+        headline = Headline.objects.get(pk=headline_id)
+        headline.delete()
+        return render_to_response('news/headline_delete.html')
+    except Headline.DoesNotExist:
+        raise Http404
