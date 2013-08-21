@@ -8,7 +8,9 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'tapwn.news.views.home', name='home'),
     # url(r'^tapwn/', include('tapwn.foo.urls')),
+    url(r'^headlines/$', 'tapwn.news.views.headline_index', name='headlines'),
     url(r'^headlines/(?P<headline_id>\d+)/$', 'tapwn.news.views.headline_detail', name='headline_detail'),
+    url(r'^headlines/create/$', 'tapwn.news.views.headline_create', name='headline_create'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

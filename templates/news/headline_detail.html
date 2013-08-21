@@ -2,7 +2,7 @@
 {% block title %}Headline Detail {% endblock %}
 {% block content %}
     <h2>{{headline.subject}}</h2>
-    <img src="http://lorempixel.com/400/200/" />
+    <img src="{{headline.image_link}}" />
     <p>{{headline.description}}</p>
     {{headline.source_link}}
 
