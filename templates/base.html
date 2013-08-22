@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
 	<title>Jumping into Django | {% block title %}Homepage{% endblock %}</title>
+    <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
     <div id="header">
@@ -11,6 +12,7 @@
         {% else %}
             <p>Welcome.  Please <a href="{% url login %}">Log-In</a></p>
         {% endif %}
+        <h1 id="logo">Logo</h1>
         <h1>The Latest News</h1>
     </div>
 	<div class="navigation">
