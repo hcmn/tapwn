@@ -2,7 +2,7 @@
 {% block title %}Headlines Index{% endblock %}
 {% block content %}
     <h2>Headlines</h2>
-    {% for headline in headlines %}
+    {% for headline in headlines reversed %}
         <a href="{% url headline_detail headline.id %}">{{headline.id}}. {{headline.subject}}</a><br />
     {% endfor %}
 {% endblock %}

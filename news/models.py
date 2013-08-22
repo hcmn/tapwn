@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 class Headline(models.Model):
@@ -10,3 +11,8 @@ class Headline(models.Model):
 
     def __unicode__(self):
         return self.subject
+
+    def published_today(self):
+        return self.publication_date.date() == datetime.date.today()
+    published_today.boolean = True
+    published_today.short_description = 'Asked today?'
