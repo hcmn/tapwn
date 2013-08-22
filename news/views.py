@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
@@ -37,7 +38,18 @@ def home(request):
     return render_to_response('news/home.html', {'right_now':datetime.utcnow(), 'headlines':headlines, 'notification':notification})
 
 def headline_index(request):
-    headlines = Headline.objects.all()
+    headline_list = Headline.objects.all().order_by("-publication_date")
+    paginator = Paginator(headline_list, 2) # show 2 headlines per page
+    # make sure page request is an int.  If not, deliver first page.
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+    # if page request (9999) is out of range, deliver last page of results.
+    try:
+        headlines = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        headlines = paginator.page(paginator.num_pages)
     return render_to_response('news/headline_index.html', {'headlines':headlines})
 
 def headline_detail(request, headline_id):
