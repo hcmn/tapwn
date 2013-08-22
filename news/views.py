@@ -33,7 +33,8 @@ def logout_view(request):
 
 def home(request):
     headlines = Headline.objects.all()
-    return render_to_response('news/home.html', {'right_now':datetime.utcnow(), 'headlines':headlines})
+    notification = "This is an area for notifications to site visitors.  Maybe there's a sale or something, who knows."
+    return render_to_response('news/home.html', {'right_now':datetime.utcnow(), 'headlines':headlines, 'notification':notification})
 
 def headline_index(request):
     headlines = Headline.objects.all()

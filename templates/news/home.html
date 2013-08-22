@@ -5,6 +5,7 @@
     <p>Well, since it's already {{ right_now.minute }} past {{ right_now.hour }} UTC,
     that is as far as we are going to take you in this tutorial.</p>
     <p>What you do next is up to you...</p>
+    <p style="background: yellow; width: 100%;">{{ notification }}</p>
     <h3>Headlines:</h3>
     {% for headline in headlines %}
         Date: {{ headline.publication_date|date:"D d M Y" }} <img src="{{ headline.image_link }}" width=200px height=100px /><a href="{% url headline_detail headline.id%}">{{ headline.subject }}</a> Source: {{ headline.source_link }}<br/>
