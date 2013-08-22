@@ -35,6 +35,7 @@ def logout_view(request):
 def home(request):
     headlines = Headline.objects.all()
     notification = "This is an area for notifications to site visitors.  Maybe there's a sale or something, who knows."
+    #return redirect('maintenance')
     return render_to_response('news/home.html', {'right_now':datetime.utcnow(), 'headlines':headlines, 'notification':notification})
 
 def headline_index(request):
@@ -93,3 +94,6 @@ def headline_delete(request, headline_id):
         return render_to_response('news/headline_delete.html')
     except Headline.DoesNotExist:
         raise Http404
+
+def maintenance(request):
+    return render_to_response('maintenance.html')
