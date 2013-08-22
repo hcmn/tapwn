@@ -5,4 +5,19 @@
     {% for headline in headlines.object_list %}
         <a href="{% url headline_detail headline.id %}">{{headline.id}}. {{headline.subject}}</a><br />
     {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if headlines.has_previous %}
+                <a href="?page={{ headlines.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ headlines.number }} of {{ headlines.paginator.num_pages }}.
+            </span>
+
+            {% if headlines.has_next %}
+                <a href="?page={{ headlines.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock %}
