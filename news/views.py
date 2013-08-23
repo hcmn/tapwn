@@ -34,7 +34,7 @@ def logout_view(request):
 
 def home(request):
     headline_list = Headline.objects.all().order_by("-publication_date")
-    paginator = Paginator(headline_list, 2) # show 2 headlines per page
+    paginator = Paginator(headline_list, 10) # show 2 headlines per page
     notification = "This is an area for notifications to site visitors.  Maybe there's a sale or something, who knows."
     # make sure page request is an int.  If not, deliver first page.
     try:

@@ -2,9 +2,26 @@
 {% block title %}gaming news{% endblock %}
 {% block content %}
     <p style="background: yellow; width: 100%;">{{ notification }}</p>
+    <div class="jumbotron">
+        <h1>Jumbotron Heading</h1>
+        <p class="lead">some lead text as overlay on this Jumbotron.</p>
+        <p><a class="btn btn-lg btn-success" href="#">Sign up today</a></p>
+    </div>
+    <div class="row marketing">
     {% for headline in headlines.object_list %}
-        {% if headline.published_today %}*new label* {% endif %}{{ headline.publication_date|date:"D d M Y" }} <img src="{{ headline.image_link }}" width=200px height=100px /><a href="{% url headline_detail headline.id%}">{{ headline.subject }}</a><br/>
+        {% if forloop.counter|divisibleby:2 %}
+        <div class="col-lg-6">
+            <a href="{% url headline_detail headline.id %}"><h4>{{ headline.subject }}</h4></a>
+            <p>{% if headline.published_today %}*new label*{% else %} <small>{{ headline.publication_date|date:"d M Y" }} </small>{% endif %}{{ headline.description|truncatewords:10 }}</p>
+        </div>
+        {% else %}
+        <div class="col-lg-6">
+            <a href="{% url headline_detail headline.id %}"><h4>{{ headline.subject }}</h4></a>
+            <p>{% if headline.published_today %}*new label*{% else %} <small>{{ headline.publication_date|date:"d M Y" }} </small>{% endif %}{{ headline.description|truncatewords:10 }}</p>
+        </div>
+        {% endif %}
     {% endfor %}
+    </div>
     <div class="pagination">
         <span class="step-links">
             {% if headlines.has_previous %}
