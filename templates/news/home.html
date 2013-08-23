@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}gaming news{% endblock %}
 {% block content %}
-    <p style="background: yellow; width: 100%;">{{ notification }}</p>
+    {% if notification %}<p style="background: yellow; width: 100%;">{{ notification }}</p>{% endif %}
     <div class="jumbotron" style="background:url('http://www.lorempixel.com/800/600/') center center;">
         <h1>Jumbotron Heading</h1>
         <p class="lead">some lead text as overlay on this Jumbotron.</p>
@@ -11,13 +11,13 @@
     {% for headline in headlines.object_list %}
         {% if forloop.counter|divisibleby:2 %}
         <div class="col-lg-6">
-            <a href="{% url headline_detail headline.id %}"><h4>{{ headline.subject }}</h4></a>
-            <p>{% if headline.published_today %}*new label*{% else %} <small>{{ headline.publication_date|date:"d M Y" }} </small>{% endif %}{{ headline.description|truncatewords:10 }}</p>
+            <h4>{% if headline.published_today %}<span class="label label-success">new</span>{% endif %} <a href="{% url headline_detail headline.id %}">{{ headline.subject }}</a></h4>
+            <p><small>{{ headline.publication_date|date:"d M Y" }} | </small>{{ headline.description|truncatewords:30 }}</p>
         </div>
         {% else %}
         <div class="col-lg-6">
-            <a href="{% url headline_detail headline.id %}"><h4>{{ headline.subject }}</h4></a>
-            <p>{% if headline.published_today %}*new label*{% else %} <small>{{ headline.publication_date|date:"d M Y" }} </small>{% endif %}{{ headline.description|truncatewords:10 }}</p>
+            <h4>{% if headline.published_today %}<span class="label label-success">new</span>{% endif %} <a href="{% url headline_detail headline.id %}">{{ headline.subject }}</a></h4>
+            <p><small>{{ headline.publication_date|date:"d M Y" }} | </small>{{ headline.description|truncatewords:30 }}</p>
         </div>
         {% endif %}
     {% endfor %}

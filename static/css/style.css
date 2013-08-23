@@ -1,3 +1,4 @@
 body { font-family: 'Open Sans Condensed', sans-serif; background: url('') center center;}
 .container { background: white; }
 #logo { font-family: 'Press Start 2P', 'Helvetica', cursive; }
+.jumbotron { color: #888; }
