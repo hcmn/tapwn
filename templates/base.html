@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<title>Jumping into Django | {% block title %}Homepage{% endblock %}</title>
+	<title>tapwn | {% block title %}Homepage{% endblock %}</title>
     <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -12,10 +12,9 @@
         {% if user.is_authenticated %}
             <p>Welcome, <b>{{ user.username }}</b> | <a href="{% url logout %}">Logout</a></p>
         {% else %}
-            <p>Welcome.  Please <a href="{% url login %}">Log-In</a></p>
+            <p><a href="{% url login %}">Log-In</a></p>
         {% endif %}
         <h1 id="logo">Logo</h1>
-        <h1>The Latest News</h1>
     </div>
 	<div class="navigation">
 		<p>Navigation: <a href="{% url home %}">Home</a> | <a href="{% url headlines %}">Headlines</a> | <a href="{% url headline_create %}">Create Headline</a></p>
