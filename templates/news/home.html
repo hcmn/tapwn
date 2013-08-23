@@ -7,17 +7,17 @@
         <p class="lead">some lead text as overlay on this Jumbotron.</p>
         <p><a class="btn btn-lg btn-success" href="#">Sign up today</a></p>
     </div>
-    <div class="row marketing">
+    <div itemscope itemtype="http://schema.org/NewsArticle" class="row marketing">
     {% for headline in headlines.object_list %}
         {% if forloop.counter|divisibleby:2 %}
         <div class="col-lg-6">
-            <h4>{% if headline.published_today %}<span class="label label-success">new</span>{% endif %} <a href="{% url headline_detail headline.id %}">{{ headline.subject }}</a></h4>
-            <p><small>{{ headline.publication_date|date:"d M Y" }} | </small>{{ headline.description|truncatewords:30 }}</p>
+            <h4 itemprop="headline">{% if headline.published_today %}<span class="label label-success">new</span>{% endif %} <a href="{% url headline_detail headline.id %}">{{ headline.subject }}</a></h4>
+            <p itemprop="description"><small>{{ headline.publication_date|date:"d M Y" }} | </small>{{ headline.description|truncatewords:30 }}</p>
         </div>
         {% else %}
         <div class="col-lg-6">
-            <h4>{% if headline.published_today %}<span class="label label-success">new</span>{% endif %} <a href="{% url headline_detail headline.id %}">{{ headline.subject }}</a></h4>
-            <p><small>{{ headline.publication_date|date:"d M Y" }} | </small>{{ headline.description|truncatewords:30 }}</p>
+            <h4 itemprop="headline">{% if headline.published_today %}<span class="label label-success">new</span>{% endif %} <a href="{% url headline_detail headline.id %}">{{ headline.subject }}</a></h4>
+            <p itemprop="description"><small>{{ headline.publication_date|date:"d M Y" }} | </small>{{ headline.description|truncatewords:30 }}</p>
         </div>
         {% endif %}
     {% endfor %}
