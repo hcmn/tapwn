@@ -32,6 +32,9 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
+def about(request):
+    return render_to_response('about.html')
+
 def home(request):
     headline_list = Headline.objects.all().order_by("-publication_date")
     paginator = Paginator(headline_list, 10) # show 2 headlines per page

@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^login/$', 'tapwn.news.views.login_page', name='login'),
     url(r'^logout/$', 'tapwn.news.views.logout_view', name='logout'),
+    url(r'^about/$', 'tapwn.news.views.about', name='about'),
     url(r'^maintenance/$', 'tapwn.news.views.maintenance', name='maintenance'),
     url(r'^$', 'tapwn.news.views.home', name='home'),
     # url(r'^tapwn/', include('tapwn.foo.urls')),
