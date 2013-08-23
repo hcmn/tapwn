@@ -3,7 +3,10 @@
 {% block content %}
     <h2>Headlines</h2>
     {% for headline in headlines.object_list %}
-        <a href="{% url headline_detail headline.id %}">{{headline.id}}. {{headline.subject}}</a><br />
+        <a href="{% url headline_detail headline.id %}">{{headline.id}}. {{headline.subject}} | </a>
+        <a href="{% url headline_update headline.id%}">Edit This Headline | </a>
+        <a href="{% url headline_delete headline.id %}">Delete This Headline</a>
+        <br />
     {% endfor %}
     <div class="pagination">
         <span class="step-links">
