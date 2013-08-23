@@ -4,6 +4,7 @@ import datetime
 # Create your models here.
 class Headline(models.Model):
     publication_date = models.DateTimeField(auto_now_add=True)
+    schedule_content = models.DateTimeField(blank=True)
     subject = models.CharField(max_length=200)
     description = models.TextField()
     hotness_label = models.CharField(max_length=200, blank=True)

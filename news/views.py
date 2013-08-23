@@ -36,7 +36,7 @@ def about(request):
     return render_to_response('about.html')
 
 def home(request):
-    headline_list = Headline.objects.all().order_by("-publication_date")
+    headline_list = Headline.objects.all().filter(schedule_content__lte=datetime.now()).order_by("-publication_date")
     paginator = Paginator(headline_list, 10) # show 2 headlines per page
     notification = "This is an area for notifications to site visitors.  Maybe there's a sale or something, who knows."
     # make sure page request is an int.  If not, deliver first page.
