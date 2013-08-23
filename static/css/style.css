@@ -1,7 +1,7 @@
 body { font-family: 'Open Sans Condensed', sans-serif; background: url('') center center;}
 .container { background: white; }
 #logo { font-family: 'Press Start 2P', 'Helvetica', cursive; }
-.jumbotron { color: #888; }
+.jumbotron { color: #fff; }
 .row h4 { text-align: center; }
 .row p{ text-align: justify; }
 #content p { text-align: justify; }
