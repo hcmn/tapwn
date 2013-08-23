@@ -2,7 +2,9 @@
 {% block title %}{{ headline.subject }}{% endblock %}
 {% block content %}
     <h2>{{headline.subject}}</h2>
-    <img src="{{headline.image_link}}" />
+    {% if headline.image_link %}
+    <img src="{{headline.image_link}}" class="img-rounded img-responsive" width=100% height=100% />
+    {% endif %}
     <p>{{headline.description}}</p>
     <p>Source: <a href="http://{{headline.source_link}}" target="_blank">{{headline.source_link}}</a></p>
 {% endblock %}
