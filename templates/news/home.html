@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}gaming news{% endblock %}
 {% block content %}
-    {% if notification %}<p style="background: yellow; width: 100%;">{{ notification }}</p>{% endif %}
+    {% if notification %}<p class="alert alert-info">{{ notification }}</p>{% endif %}
     <div class="jumbotron" style="background:url('http://www.lorempixel.com/800/600/') center center;">
         <h1>Jumbotron Heading</h1>
         <p class="lead">some lead text as overlay on this Jumbotron.</p>
