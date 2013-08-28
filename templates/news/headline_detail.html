@@ -17,26 +17,26 @@
                 <p itemtype="description">{{headline.description}}</p>
             </div>
             <div class="panel-footer">
-                <p itemtype="isBasedOnUrl">Source: <a href="http://{% if headline.source_link == "tapwn exclusive" %}#{% else %}{{headline.source_link}}{% endif %}" target="_blank">{{headline.source_link}}</a></p>
-                <p itemtype="isBasedOnUrl">Source: <a href="http://{% if headline.source2_link %}{{headline.source2_link}}{% endif %}" target="_blank">{{headline.source2_link}}</a></p>
-                <p itemtype="url">YouTube: <a href="http://{% if headline.youtube_link %}{{headline.youtube_link}}{% endif %}" target="_blank">Watch it on YouTube</a></p>
-                <p itemtype="url">Vimeo: <a href="http://{% if headline.vimeo_link %}{{headline.vimeo_link}}{% endif %}" target="_blank">Watch it on Vimeo</a></p>
-                <p itemtype="url">Video: <a href="http://{% if headline.video_link %}{{headline.video_link}}{% endif %}" target="_blank">Watch this video</a></p>
-                <p itemtype="url">iTunes: <a href="http://{% if headline.itunes_link %}{{headline.itunes_link}}{% endif %}" target="_blank">Get it for iOS</a></p>
-                <p itemtype="url">Apple Appstore: <a href="http://{% if headline.appstore_link %}{{headline.appstore_link}}{% endif %}" target="_blank">Get it for OS X</a></p>
-                <p itemtype="url">Google Play: <a href="http://{% if headline.play_link %}{{headline.play_link}}{% endif %}" target="_blank">Get it for Google Play</a></p>
-                <p itemtype="url">Microsoft: <a href="http://{% if headline.windows_link %}{{headline.windows_link}}{% endif %}" target="_blank">Get it for Windows</a></p>
-                <p itemtype="url">Sony: <a href="http://{% if headline.sony_link %}{{headline.sony_link}}{% endif %}" target="_blank">{{headline.sony_link}}</a></p>
-                <p itemtype="url">Nintendo: <a href="http://{% if headline.nintendo_link %}{{headline.nintendo_link}}{% endif %}" target="_blank">{{headline.nintendo_link}}</a></p>
-                <p itemtype="url">Steam: <a href="http://{% if headline.steam_link %}{{headline.steam_link}}{% endif %}" target="_blank">Get it on Steam</a></p>
-                <p itemtype="url">Ouya: <a href="http://{% if headline.ouya_link %}{{headline.ouya_link}}{% endif %}" target="_blank">{{headline.ouya_link}}</a></p>
-                <p itemtype="url">Indie: <a href="http://{% if headline.indie_link %}{{headline.indie_link}}{% endif %}" target="_blank">{{headline.indie_link}}</a></p>
-                <p itemtype="url">Facebook: <a href="http://{% if headline.facebook_link %}{{headline.facebook_link}}{% endif %}" target="_blank">Get it on Facebook</a></p>
-                <p itemtype="url">Pinterest: <a href="http://{% if headline.pinterest_link %}{{headline.pinterest_link}}{% endif %}" target="_blank">Find it on Pinterest</a></p>
-                <p itemtype="url">Twitter: <a href="http://{% if headline.twitter_link %}{{headline.twitter_link}}{% endif %}" target="_blank">{{headline.twitter_link}}</a></p>
-                <p itemtype="url">Company: <a href="http://{% if headline.company_link %}{{headline.company_link}}{% endif %}" target="_blank">{{headline.company_link}}</a></p>
-                <p itemtype="url">Amazon: <a href="http://{% if headline.amazon_link %}{{headline.amazon_link}}{% endif %}" target="_blank">Get it from Amazon</a></p>
-                <p itemtype="url">Affiliate: <a href="http://{% if headline.affiliate_link %}{{headline.affiliate_link}}{% endif %}" target="_blank">{{headline.affiliate_link}}</a></p>
+                {% if headline.source_link %}<p itemtype="isBasedOnUrl">Source: <a href="http://{{headline.source_link}}" target="_blank">{{headline.source_link}}</a></p>{% endif %}
+                {% if headline.source2_link %}<p itemtype="isBasedOnUrl">Source: <a href="http://{{headline.source2_link}}" target="_blank">{{headline.source2_link}}</a></p>{% endif %}
+                {% if headline.youtube_link %}<p itemtype="url">YouTube: <a href="http://{{headline.youtube_link}}" target="_blank">Watch it on YouTube</a></p>{% endif %}
+                {% if headline.vimeo_link %}<p itemtype="url">Vimeo: <a href="http://{{headline.vimeo_link}}" target="_blank">Watch it on Vimeo</a></p>{% endif %}
+                {% if headline.video_link %}<p itemtype="url">Video: <a href="http://{{headline.video_link}}" target="_blank">Watch this video</a></p>{% endif %}
+                {% if headline.itunes_link %}<p itemtype="url">iTunes: <a href="http://{{headline.itunes_link}}" target="_blank">Get it for iOS</a></p>{% endif %}
+                {% if headline.appstore_link %}<p itemtype="url">Apple Appstore: <a href="http://{{headline.appstore_link}}" target="_blank">Get it for OS X</a></p>{% endif %}
+                {% if headline.play_link %}<p itemtype="url">Google Play: <a href="http://{{headline.play_link}}" target="_blank">Get it for Google Play</a></p>{% endif %}
+                {% if headline.windows_link %}<p itemtype="url">Microsoft: <a href="http://{{headline.windows_link}}" target="_blank">Get it for Windows</a></p>{% endif %}
+                {% if headline.sony_link %}<p itemtype="url">Sony: <a href="http://{{headline.sony_link}}" target="_blank">{{headline.sony_link}}</a></p>{% endif %}
+                {% if headline.nintendo_link %}<p itemtype="url">Nintendo: <a href="http://{{headline.nintendo_link}}" target="_blank">{{headline.nintendo_link}}</a></p>{% endif %}
+                {% if headline.steam_link %}<p itemtype="url">Steam: <a href="http://{{headline.steam_link}}" target="_blank">Get it on Steam</a></p>{% endif %}
+                {% if headline.ouya_link %}<p itemtype="url">Ouya: <a href="http://{{headline.ouya_link}}" target="_blank">{{headline.ouya_link}}</a></p>{% endif %}
+                {% if headline.indie_link %}<p itemtype="url">Indie: <a href="http://{{headline.indie_link}}" target="_blank">{{headline.indie_link}}</a></p>{% endif %}
+                {% if headline.facebook_link %}<p itemtype="url">Facebook: <a href="http://{{headline.facebook_link}}" target="_blank">Get it on Facebook</a></p>{% endif %}
+                {% if headline.pinterest_link %}<p itemtype="url">Pinterest: <a href="http://{{headline.pinterest_link}}" target="_blank">Find it on Pinterest</a></p>{% endif %}
+                {% if headline.twitter_link %}<p itemtype="url">Twitter: <a href="http://{{headline.twitter_link}}" target="_blank">{{headline.twitter_link}}</a></p>{% endif %}
+                {% if headline.company_link %}<p itemtype="url">Company: <a href="http://{{headline.company_link}}" target="_blank">{{headline.company_link}}</a></p>{% endif %}
+                {% if headline.amazon_link %}<p itemtype="url">Amazon: <a href="http://{{headline.amazon_link}}" target="_blank">Get it from Amazon</a></p>{% endif %}
+                {% if headline.affiliate_link %}<p itemtype="url">Affiliate: <a href="http://{{headline.affiliate_link}}" target="_blank">{{headline.affiliate_link}}</a></p>{% endif %}
             </div>
         </div>
 
