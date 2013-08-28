@@ -9,7 +9,9 @@ class Headline(models.Model):
     description = models.TextField()
     hotness_label = models.CharField(max_length=200, blank=True)
     utility_label = models.CharField(max_length=200, blank=True)
-    image_link = models.CharField(max_length=200, blank=True)
+    functional_label = models.CharField(max_length=200, blank=True)
+    image_link = models.ImageField(upload_to='content', blank=True)
+    image2_link = models.ImageField(upload_to='content', blank=True)
     youtube_link = models.CharField(max_length=200, blank=True)
     vimeo_link = models.CharField(max_length=200, blank=True)
     video_link = models.CharField(max_length=200, blank=True)
@@ -30,6 +32,8 @@ class Headline(models.Model):
     affiliate_link = models.CharField(max_length=200, blank=True)
     source_link = models.CharField(max_length=200)
     source2_link = models.CharField(max_length=200, blank=True)
+    author_name = models.CharField(max_length=200, blank=True)
+    author_link = models.CharField(max_length=200, blank=True)
 
     def __unicode__(self):
         return self.subject
