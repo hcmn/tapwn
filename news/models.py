@@ -12,6 +12,7 @@ class Headline(models.Model):
     functional_label = models.CharField(max_length=200, blank=True)
     image_link = models.ImageField(upload_to='content', blank=True)
     image2_link = models.ImageField(upload_to='content', blank=True)
+    imagelocal_link = models.CharField(max_length=200, blank=True)
     youtube_link = models.CharField(max_length=200, blank=True)
     vimeo_link = models.CharField(max_length=200, blank=True)
     video_link = models.CharField(max_length=200, blank=True)

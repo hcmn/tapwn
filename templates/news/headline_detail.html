@@ -3,8 +3,12 @@
 {% block content %}
     <div itemscope itemtype="http://schema.org/NewsArticle">
         <h2 itemtype="headline">{{headline.subject}}</h2>
-        {% if headline.image_link %}
-        <img itemtype="image" src="http://{{headline.image_link}}" class="img-rounded img-responsive" width=100% height=100% />
+        {% if headline.imagelocal_link %}
+        <img itemtype="image" src="{{headline.imagelocal_link}}" class="img-rounded img-responsive" width=100% height=100% />
+        {% else %}
+            {% if headline.image_link %}
+            <img itemtype="image" src="{{headline.image_link.url}}" class="img-rounded img-responsive" width=100% height=100% />
+            {% endif %}
         {% endif %}
 
         <div class="panel panel-primary">
@@ -12,9 +16,15 @@
                 {% if headline.published_today %}<span class="label label-success">new</span>{% endif %}
                 {% if headline.hotness_label %}<span class="label label-danger">{{headline.hotness_label}}</span>{% endif %}
                 {% if headline.utility_label %}<span class="label label-info">{{headline.utility_label}}</span>{% endif %}
+                {% if headline.functional_label %}<span class="label label-warning">{{headline.functional_label}}</span>{% endif %}
             </div>
             <div class="panel-body">
                 <p itemtype="description">{{headline.description}}</p>
+                {% if headline.imagelocal_link %}
+                    {% if headline.image_link %}
+                    <img itemtype="image" src="{{headline.image_link.url}}" class="img-rounded img-responsive" width=100% height=100% /><br />
+                    {% endif %}
+                {% endif %}
                 {% if headline.image2_link %}
                 <img itemtype="image" src="{{headline.image2_link.url}}" class="img-rounded img-responsive" width=100% height=100% />
                 {% endif %}
@@ -24,10 +34,10 @@
                 {% if headline.source2_link %}<p itemtype="isBasedOnUrl">Source: <a href="http://{{headline.source2_link}}" target="_blank">{{headline.source2_link}}</a></p>{% endif %}
                 {% if headline.youtube_link %}<p itemtype="url">YouTube: <a href="http://{{headline.youtube_link}}" target="_blank">Watch it on YouTube</a></p>{% endif %}
                 {% if headline.vimeo_link %}<p itemtype="url">Vimeo: <a href="http://{{headline.vimeo_link}}" target="_blank">Watch it on Vimeo</a></p>{% endif %}
-                {% if headline.video_link %}<p itemtype="url">Video: <a href="http://{{headline.video_link}}" target="_blank">Watch this video</a></p>{% endif %}
+                {% if headline.video_link %}<p itemtype="url">Video: <a href="{{headline.video_link}}" target="_blank">Watch this video</a></p>{% endif %}
                 {% if headline.itunes_link %}<p itemtype="url">iTunes: <a href="http://{{headline.itunes_link}}" target="_blank">Get it for iOS</a></p>{% endif %}
                 {% if headline.appstore_link %}<p itemtype="url">Apple Appstore: <a href="http://{{headline.appstore_link}}" target="_blank">Get it for OS X</a></p>{% endif %}
-                {% if headline.play_link %}<p itemtype="url">Google Play: <a href="http://{{headline.play_link}}" target="_blank">Get it for Google Play</a></p>{% endif %}
+                {% if headline.play_link %}<p itemtype="url">Google Play: <a href="http://{{headline.play_link}}" target="_blank">Get it from Google Play</a></p>{% endif %}
                 {% if headline.windows_link %}<p itemtype="url">Microsoft: <a href="http://{{headline.windows_link}}" target="_blank">Get it for Windows</a></p>{% endif %}
                 {% if headline.sony_link %}<p itemtype="url">Sony: <a href="http://{{headline.sony_link}}" target="_blank">{{headline.sony_link}}</a></p>{% endif %}
                 {% if headline.nintendo_link %}<p itemtype="url">Nintendo: <a href="http://{{headline.nintendo_link}}" target="_blank">{{headline.nintendo_link}}</a></p>{% endif %}
@@ -40,6 +50,7 @@
                 {% if headline.company_link %}<p itemtype="url">Company: <a href="http://{{headline.company_link}}" target="_blank">{{headline.company_link}}</a></p>{% endif %}
                 {% if headline.amazon_link %}<p itemtype="url">Amazon: <a href="http://{{headline.amazon_link}}" target="_blank">Get it from Amazon</a></p>{% endif %}
                 {% if headline.affiliate_link %}<p itemtype="url">Affiliate: <a href="http://{{headline.affiliate_link}}" target="_blank">{{headline.affiliate_link}}</a></p>{% endif %}
+                {% if headline.author_link %}<p itemtype="url">Author: <a href="http://{{headline.author_link}}" target="_blank">{{headline.author_name}}</a></p>{% endif %}
             </div>
         </div>
 
