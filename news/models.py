@@ -43,3 +43,16 @@ class Headline(models.Model):
         return self.publication_date.date() == datetime.date.today()
     published_today.boolean = True
     published_today.short_description = 'Asked today?'
+
+class Jumbotron(models.Model):
+    publication_date = models.DateTimeField(auto_now_add=True)
+    schedule_content_start = models.DateTimeField(blank=True, null=True)
+    schedule_content_end = models.DateTimeField(blank=True, null=True)
+    header_text = models.CharField(max_length=200)
+    lead_text = models.CharField(max_length=200)
+    image_link = models.ImageField(upload_to='content', blank=True)
+    imagelocal_link = models.CharField(max_length=200, blank=True)
+    affiliate_link = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.header_text

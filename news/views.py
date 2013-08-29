@@ -1,11 +1,12 @@
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
-from tapwn.news.models import Headline
+from tapwn.news.models import Headline, Jumbotron
 from tapwn.news.forms import HeadlineForm, LoginForm
 
 def login_page(request):
@@ -37,6 +38,11 @@ def about(request):
 
 def home(request):
     headline_list = Headline.objects.all().filter(schedule_content__lte=datetime.now()).order_by("-publication_date")
+    right_now = datetime.now()
+    try:
+        jumbotron = Jumbotron.objects.get(schedule_content_start__lt=right_now, schedule_content_end__gt=right_now)
+    except ObjectDoesNotExist:
+        jumbotron = Jumbotron.objects.get(pk=1)
     paginator = Paginator(headline_list, 10) # show 2 headlines per page
     notification = ""
     # make sure page request is an int.  If not, deliver first page.
@@ -50,7 +56,7 @@ def home(request):
     except (EmptyPage, InvalidPage):
         headlines = paginator.page(paginator.num_pages)
     #return redirect('maintenance')
-    return render_to_response('news/home.html', {'right_now':datetime.utcnow(), 'headlines':headlines, 'notification':notification})
+    return render_to_response('news/home.html', {'right_now':datetime.utcnow(), 'headlines':headlines, 'jumbotron':jumbotron, 'right_now':right_now, 'notification':notification})
 
 def headline_index(request):
     headline_list = Headline.objects.all().order_by("-publication_date")

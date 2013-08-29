@@ -2,11 +2,19 @@
 {% block title %}gaming news{% endblock %}
 {% block content %}
     {% if notification %}<p class="alert alert-info">{{ notification }}</p>{% endif %}
+    {% if jumbotron %}
+    <div class="jumbotron" style="background:url('{% if jumbotron.imagelocal_link %}{{jumbotron.imagelocal_link}}{% else %}{{jumbotron.image_link.url}}{% endif %}'); background-size: 100% auto;">
+        <h1>{{jumbotron.header_text}}</h1>
+        <p class="lead">{{jumbotron.lead_text}}</p>
+        <p><a class="btn btn-lg btn-success" href="http://{{jumbotron.affiliate_link}}">Get it!</a></p>
+    </div>
+    {% else %}
     <div class="jumbotron" style="background:url('http://www.lorempixel.com/800/600/') center center;">
-        <h1>Jumbotron Heading</h1>
+        <h1>Fallback Jumbotron Heading</h1>
         <p class="lead">some lead text as overlay on this Jumbotron.</p>
         <p><a class="btn btn-lg btn-success" href="#">Sign up today</a></p>
     </div>
+    {% endif %}
     <div itemscope itemtype="http://schema.org/NewsArticle" class="row marketing">
     {% for headline in headlines.object_list %}
         {% if forloop.counter|divisibleby:2 %}
