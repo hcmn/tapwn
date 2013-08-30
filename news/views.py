@@ -1,7 +1,6 @@
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect
@@ -40,6 +39,7 @@ def home(request):
     headline_list = Headline.objects.all().filter(schedule_content__lte=datetime.now()).order_by("-publication_date")
     right_now = datetime.now()
     jumbotron = Jumbotron.objects.filter(schedule_content_start__lt=right_now, schedule_content_end__gte=right_now).latest("schedule_content_start")
+    # from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
     #try:
     #except (ObjectDoesNotExist, MultipleObjectsReturned) as e:
     #    if e is ObjectDoesNotExist:
