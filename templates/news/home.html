@@ -4,8 +4,8 @@
     {% if notification %}<p class="alert alert-info">{{ notification }}</p>{% endif %}
     {% if jumbotron %}
     <div class="jumbotron" style="background:url('{% if jumbotron.imagelocal_link %}{{jumbotron.imagelocal_link}}{% else %}{{jumbotron.image_link.url}}{% endif %}') no-repeat; background-size: 100% auto;">
-        <h1>{{jumbotron.header_text}}</h1>
-        <p class="lead">{{jumbotron.lead_text}}</p><br />
+        <h1>{{jumbotron.header_text}}</h1><br />
+        {% if jumbotron.lead_text != '.' %}<p class="lead">{{jumbotron.lead_text}}</p><br />{% endif %}
         <p><a class="btn btn-lg btn-success" href="http://{{jumbotron.affiliate_link}}" target="_blank">Get it!</a></p>
     </div>
     {% else %}
