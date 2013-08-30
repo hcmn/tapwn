@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect
@@ -39,10 +39,13 @@ def about(request):
 def home(request):
     headline_list = Headline.objects.all().filter(schedule_content__lte=datetime.now()).order_by("-publication_date")
     right_now = datetime.now()
-    try:
-        jumbotron = Jumbotron.objects.get(schedule_content_start__lt=right_now, schedule_content_end__gt=right_now)
-    except ObjectDoesNotExist:
-        jumbotron = Jumbotron.objects.get(pk=1)
+    jumbotron = Jumbotron.objects.filter(schedule_content_start__lt=right_now, schedule_content_end__gte=right_now).latest("schedule_content_start")
+    #try:
+    #except (ObjectDoesNotExist, MultipleObjectsReturned) as e:
+    #    if e is ObjectDoesNotExist:
+    #        jumbotron = Jumbotron.objects.get(pk=1)
+    #    if e is MultipleObjectsReturned:
+    #        jumbotron = Jumbotron.objects.filter(...).latest(...)
     paginator = Paginator(headline_list, 10) # show 2 headlines per page
     notification = ""
     # make sure page request is an int.  If not, deliver first page.
