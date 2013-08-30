@@ -5,8 +5,8 @@
     {% if jumbotron %}
     <div class="jumbotron" style="background:url('{% if jumbotron.imagelocal_link %}{{jumbotron.imagelocal_link}}{% else %}{{jumbotron.image_link.url}}{% endif %}') no-repeat; background-size: 100% auto;">
         <h1>{{jumbotron.header_text}}</h1>
-        <p class="lead">{{jumbotron.lead_text}}</p>
-        <p><a class="btn btn-lg btn-success" href="http://{{jumbotron.affiliate_link}}">Get it!</a></p>
+        <p class="lead">{{jumbotron.lead_text}}</p><br />
+        <p><a class="btn btn-lg btn-success" href="http://{{jumbotron.affiliate_link}}" target="_blank">Get it!</a></p>
     </div>
     {% else %}
     <div class="jumbotron" style="background:url('http://www.lorempixel.com/800/600/') no-repeat; background-size: 100% auto;">
