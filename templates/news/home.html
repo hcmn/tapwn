@@ -20,7 +20,7 @@
         {% if forloop.counter|divisibleby:2 %}
         <div class="col-lg-6">
             {% if headline.utility_label == "feature" %}
-                <a href="#" class="thumbnail">
+                <a href="{% url headline_detail headline.id %}" class="thumbnail">
                 {% if headline.imagelocal_link %}
                     <img src="{{headline.imagelocal_link}}" />
                 {% else %}
@@ -40,7 +40,7 @@
         {% else %}
         <div class="col-lg-6">
             {% if headline.utility_label == "feature" %}
-                <a href="#" class="thumbnail">
+                <a href="{% url headline_detail headline.id %}" class="thumbnail">
                 {% if headline.imagelocal_link %}
                     <img src="{{headline.imagelocal_link}}" />
                 {% else %}
