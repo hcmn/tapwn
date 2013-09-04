@@ -1,6 +1,5 @@
 /* Base Template */
 body {
-    font-family: 'Open Sans Condensed', sans-serif;
     font-size: 1.8em;
     background: white url('') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -13,6 +12,7 @@ body {
 /* News - Home Template */
 #logo { font-family: 'Press Start 2P', 'Helvetica', cursive; }
 .jumbotron {color: #fff;}
+/* for the jumbotron div, use this inline style: background: url('...') no-repeat; background-size: 100% 100%; */
 .headline { text-align: center; line-height: 1.3em; }
 .headline_description { text-align: justify; }
 #content p { text-align: justify; }

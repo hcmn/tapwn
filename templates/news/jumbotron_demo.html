@@ -19,15 +19,6 @@
     {% for headline in headlines.object_list %}
         {% if forloop.counter|divisibleby:2 %}
         <div class="col-lg-6">
-            {% if headline.utility_label == "feature" %}
-                <a href="#" class="thumbnail">
-                {% if headline.imagelocal_link %}
-                    <img src="{{headline.imagelocal_link}}" />
-                {% else %}
-                    {% if headline.image_link %}<a href="#" class="thumbnail"><img src="{{headline.image_link}}" /></a>{% endif %}
-                {% endif %}
-                </a>
-            {% endif %}
             <h4 class="headline" itemprop="headline">
             {% if headline.published_today %}<span class="label label-success">new</span>{% endif %}
             {% if headline.hotness_label %}<span class="label label-danger">{{headline.hotness_label}}</span>{% endif %}
@@ -39,15 +30,6 @@
         </div>
         {% else %}
         <div class="col-lg-6">
-            {% if headline.utility_label == "feature" %}
-                <a href="#" class="thumbnail">
-                {% if headline.imagelocal_link %}
-                    <img src="{{headline.imagelocal_link}}" />
-                {% else %}
-                    {% if headline.image_link %}<a href="#" class="thumbnail"><img src="{{headline.image_link}}" /></a>{% endif %}
-                {% endif %}
-                </a>
-            {% endif %}
             <h4 class="headline" itemprop="headline">
             {% if headline.published_today %}<span class="label label-success">new</span>{% endif %}
             {% if headline.hotness_label %}<span class="label label-danger">{{headline.hotness_label}}</span>{% endif %}
